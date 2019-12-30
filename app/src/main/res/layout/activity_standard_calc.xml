@@ -1,277 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/black"
-    tools:context=".StandardCalcActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/resultView"
+    <data>
+
+        <variable
+            name="viewModelx"
+            type="com.example.studyingmvvm.StandardCalcViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        tools:context=".StandardCalcActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        <TextView
+            android:id="@+id/resultView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/allClear"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="2dp"
-        android:background="@color/colorOfOtherButtons"
-        android:text="@string/allClear"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/numberSeven"
-        app:layout_constraintEnd_toStartOf="@+id/signPlusOrMinus"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
 
-    <Button
-        android:id="@+id/signPlusOrMinus"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfOtherButtons"
-        android:text="@string/signPlusOrMinus"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/allClear"
-        app:layout_constraintEnd_toStartOf="@+id/opPercentage"
-        app:layout_constraintStart_toEndOf="@+id/allClear"
-        app:layout_constraintTop_toTopOf="@+id/allClear" />
+        <Button
+            android:id="@+id/allClear"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:background="@color/colorOfOtherButtons"
+            android:text="@string/allClear"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/numberSeven"
+            app:layout_constraintEnd_toStartOf="@+id/signPlusOrMinus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <Button
-        android:id="@+id/opPercentage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfOtherButtons"
-        android:text="@string/opPercentage"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/signPlusOrMinus"
-        app:layout_constraintEnd_toStartOf="@+id/opDivision"
-        app:layout_constraintStart_toEndOf="@+id/signPlusOrMinus"
-        app:layout_constraintTop_toTopOf="@+id/allClear" />
+        <Button
+            android:id="@+id/signPlusOrMinus"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfOtherButtons"
+            android:text="@string/signPlusOrMinus"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/allClear"
+            app:layout_constraintEnd_toStartOf="@+id/opPercentage"
+            app:layout_constraintStart_toEndOf="@+id/allClear"
+            app:layout_constraintTop_toTopOf="@+id/allClear" />
 
-    <Button
-        android:id="@+id/opDivision"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfArithmeticOpButtons"
-        android:text="@string/opDivision"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/allClear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/opPercentage"
-        app:layout_constraintTop_toTopOf="@+id/allClear" />
+        <Button
+            android:id="@+id/opPercentage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfOtherButtons"
+            android:text="@string/opPercentage"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/signPlusOrMinus"
+            app:layout_constraintEnd_toStartOf="@+id/opDivision"
+            app:layout_constraintStart_toEndOf="@+id/signPlusOrMinus"
+            app:layout_constraintTop_toTopOf="@+id/allClear" />
 
-    <Button
-        android:id="@+id/numberSeven"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberSeven"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/numberFour"
-        app:layout_constraintEnd_toStartOf="@+id/numberEight"
-        app:layout_constraintStart_toStartOf="@+id/allClear"
-        app:layout_constraintTop_toBottomOf="@+id/allClear" />
+        <Button
+            android:id="@+id/opDivision"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfArithmeticOpButtons"
+            android:onClick="@{()-> viewModelx.btnOpDivision()}"
+            android:text="@string/opDivision"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/allClear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/opPercentage"
+            app:layout_constraintTop_toTopOf="@+id/allClear" />
 
-    <Button
-        android:id="@+id/numberEight"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberEight"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
-        app:layout_constraintEnd_toStartOf="@+id/numberNine"
-        app:layout_constraintStart_toEndOf="@+id/numberSeven"
-        app:layout_constraintTop_toTopOf="@+id/numberSeven" />
+        <Button
+            android:id="@+id/numberSeven"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberSeven()}"
+            android:text="@string/numberSeven"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/numberFour"
+            app:layout_constraintEnd_toStartOf="@+id/numberEight"
+            app:layout_constraintStart_toStartOf="@+id/allClear"
+            app:layout_constraintTop_toBottomOf="@+id/allClear" />
 
-    <Button
-        android:id="@+id/numberNine"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberNine"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
-        app:layout_constraintEnd_toStartOf="@+id/opMultiplication"
-        app:layout_constraintStart_toEndOf="@+id/numberEight"
-        app:layout_constraintTop_toTopOf="@+id/numberSeven" />
+        <Button
+            android:id="@+id/numberEight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberEight()}"
+            android:text="@string/numberEight"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
+            app:layout_constraintEnd_toStartOf="@+id/numberNine"
+            app:layout_constraintStart_toEndOf="@+id/numberSeven"
+            app:layout_constraintTop_toTopOf="@+id/numberSeven" />
 
-    <Button
-        android:id="@+id/opMultiplication"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorOfArithmeticOpButtons"
-        android:text="@string/opMultiplication"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
-        app:layout_constraintEnd_toEndOf="@+id/opDivision"
-        app:layout_constraintStart_toEndOf="@+id/numberNine"
-        app:layout_constraintTop_toTopOf="@+id/numberSeven" />
+        <Button
+            android:id="@+id/numberNine"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberNine()}"
+            android:text="@string/numberNine"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
+            app:layout_constraintEnd_toStartOf="@+id/opMultiplication"
+            app:layout_constraintStart_toEndOf="@+id/numberEight"
+            app:layout_constraintTop_toTopOf="@+id/numberSeven" />
 
-    <Button
-        android:id="@+id/numberFour"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberFour"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/numberOne"
-        app:layout_constraintEnd_toStartOf="@+id/numberFive"
-        app:layout_constraintStart_toStartOf="@+id/allClear"
-        app:layout_constraintTop_toBottomOf="@+id/numberSeven" />
+        <Button
+            android:id="@+id/opMultiplication"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorOfArithmeticOpButtons"
+            android:onClick="@{()-> viewModelx.btnOpMultiplication()}"
+            android:text="@string/opMultiplication"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
+            app:layout_constraintEnd_toEndOf="@+id/opDivision"
+            app:layout_constraintStart_toEndOf="@+id/numberNine"
+            app:layout_constraintTop_toTopOf="@+id/numberSeven" />
 
-    <Button
-        android:id="@+id/numberFive"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberFive"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberFour"
-        app:layout_constraintEnd_toStartOf="@+id/nubmerSix"
-        app:layout_constraintStart_toEndOf="@+id/numberFour"
-        app:layout_constraintTop_toTopOf="@+id/numberFour" />
+        <Button
+            android:id="@+id/numberFour"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberFour()}"
+            android:text="@string/numberFour"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/numberOne"
+            app:layout_constraintEnd_toStartOf="@+id/numberFive"
+            app:layout_constraintStart_toStartOf="@+id/allClear"
+            app:layout_constraintTop_toBottomOf="@+id/numberSeven" />
 
-    <Button
-        android:id="@+id/nubmerSix"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberSix"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberFour"
-        app:layout_constraintEnd_toStartOf="@+id/opSubtraction"
-        app:layout_constraintStart_toEndOf="@+id/numberFive"
-        app:layout_constraintTop_toTopOf="@+id/numberFour" />
+        <Button
+            android:id="@+id/numberFive"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberFive()}"
+            android:text="@string/numberFive"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberFour"
+            app:layout_constraintEnd_toStartOf="@+id/numberSix"
+            app:layout_constraintStart_toEndOf="@+id/numberFour"
+            app:layout_constraintTop_toTopOf="@+id/numberFour" />
 
-    <Button
-        android:id="@+id/opSubtraction"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorOfArithmeticOpButtons"
-        android:text="@string/opSubtraction"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberFour"
-        app:layout_constraintEnd_toEndOf="@+id/opDivision"
-        app:layout_constraintStart_toEndOf="@+id/nubmerSix"
-        app:layout_constraintTop_toTopOf="@+id/numberFour" />
+        <Button
+            android:id="@+id/numberSix"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberSix()}"
+            android:text="@string/numberSix"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberFour"
+            app:layout_constraintEnd_toStartOf="@+id/opSubtraction"
+            app:layout_constraintStart_toEndOf="@+id/numberFive"
+            app:layout_constraintTop_toTopOf="@+id/numberFour" />
 
-    <Button
-        android:id="@+id/numberOne"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberOne"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/numberZero"
-        app:layout_constraintEnd_toStartOf="@+id/numberTwo"
-        app:layout_constraintStart_toStartOf="@+id/allClear"
-        app:layout_constraintTop_toBottomOf="@+id/numberFour" />
+        <Button
+            android:id="@+id/opSubtraction"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorOfArithmeticOpButtons"
+            android:onClick="@{()-> viewModelx.btnOpSubtraction()}"
+            android:text="@string/opSubtraction"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberFour"
+            app:layout_constraintEnd_toEndOf="@+id/opDivision"
+            app:layout_constraintStart_toEndOf="@+id/numberSix"
+            app:layout_constraintTop_toTopOf="@+id/numberFour" />
 
-    <Button
-        android:id="@+id/numberTwo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberTwo"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberOne"
-        app:layout_constraintEnd_toStartOf="@+id/numberThree"
-        app:layout_constraintStart_toEndOf="@+id/numberOne"
-        app:layout_constraintTop_toTopOf="@+id/numberOne" />
+        <Button
+            android:id="@+id/numberOne"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberOne()}"
+            android:text="@string/numberOne"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/numberZero"
+            app:layout_constraintEnd_toStartOf="@+id/numberTwo"
+            app:layout_constraintStart_toStartOf="@+id/allClear"
+            app:layout_constraintTop_toBottomOf="@+id/numberFour" />
 
-    <Button
-        android:id="@+id/numberThree"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/numberThree"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberOne"
-        app:layout_constraintEnd_toStartOf="@+id/opAddition"
-        app:layout_constraintStart_toEndOf="@+id/numberTwo"
-        app:layout_constraintTop_toTopOf="@+id/numberOne" />
+        <Button
+            android:id="@+id/numberTwo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberTwo()}"
+            android:text="@string/numberTwo"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberOne"
+            app:layout_constraintEnd_toStartOf="@+id/numberThree"
+            app:layout_constraintStart_toEndOf="@+id/numberOne"
+            app:layout_constraintTop_toTopOf="@+id/numberOne" />
 
-    <Button
-        android:id="@+id/opAddition"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorOfArithmeticOpButtons"
-        android:text="@string/opAddition"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberOne"
-        app:layout_constraintEnd_toEndOf="@+id/opDivision"
-        app:layout_constraintStart_toEndOf="@+id/numberThree"
-        app:layout_constraintTop_toTopOf="@+id/numberOne" />
+        <Button
+            android:id="@+id/numberThree"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnNumberThree()}"
+            android:text="@string/numberThree"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberOne"
+            app:layout_constraintEnd_toStartOf="@+id/opAddition"
+            app:layout_constraintStart_toEndOf="@+id/numberTwo"
+            app:layout_constraintTop_toTopOf="@+id/numberOne" />
 
-    <Button
-        android:id="@+id/numberZero"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/background_of_number_zero"
-        android:text="@string/numberZero"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/numberTwo"
-        app:layout_constraintStart_toStartOf="@+id/allClear"
-        app:layout_constraintTop_toBottomOf="@+id/numberOne" />
+        <Button
+            android:id="@+id/opAddition"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorOfArithmeticOpButtons"
+            android:onClick="@{()-> viewModelx.btnOpAddition()}"
+            android:text="@string/opAddition"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberOne"
+            app:layout_constraintEnd_toEndOf="@+id/opDivision"
+            app:layout_constraintStart_toEndOf="@+id/numberThree"
+            app:layout_constraintTop_toTopOf="@+id/numberOne" />
 
-    <Button
-        android:id="@+id/signDot"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginStart="2dp"
-        android:background="@color/colorOfNumberButtons"
-        android:text="@string/signDot"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberZero"
-        app:layout_constraintEnd_toStartOf="@+id/signEquals"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/numberZero"
-        app:layout_constraintTop_toTopOf="@+id/numberZero" />
+        <Button
+            android:id="@+id/numberZero"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/background_of_number_zero"
+            android:onClick="@{()-> viewModelx.btnNumberZero()}"
+            android:text="@string/numberZero"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/numberTwo"
+            app:layout_constraintStart_toStartOf="@+id/allClear"
+            app:layout_constraintTop_toBottomOf="@+id/numberOne" />
 
-    <Button
-        android:id="@+id/signEquals"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/background_of_sign_equals"
-        android:text="@string/signEquals"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/numberZero"
-        app:layout_constraintEnd_toEndOf="@+id/opDivision"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/signDot"
-        app:layout_constraintTop_toTopOf="@+id/numberZero" />
+        <Button
+            android:id="@+id/signDot"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@color/colorOfNumberButtons"
+            android:onClick="@{()-> viewModelx.btnSignDot()}"
+            android:text="@string/signDot"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberZero"
+            app:layout_constraintEnd_toStartOf="@+id/signEquals"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/numberZero"
+            app:layout_constraintTop_toTopOf="@+id/numberZero" />
+
+        <Button
+            android:id="@+id/signEquals"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/background_of_sign_equals"
+            android:text="@string/signEquals"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/numberZero"
+            app:layout_constraintEnd_toEndOf="@+id/opDivision"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/signDot"
+            app:layout_constraintTop_toTopOf="@+id/numberZero" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
