@@ -1,11 +1,12 @@
 package com.example.studyingmvvm
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class StandardCalcViewModel : ViewModel() {
 
     var lastDigit: String = ""
-    var result: String = "0"
+    var result = MutableLiveData<String>("0")
     var opCount: Int = 0
     var resultRemember: Double = 0.0
 
@@ -105,18 +106,29 @@ class StandardCalcViewModel : ViewModel() {
                 lastDigit == resultRemember.toString() -> lastDigit = string
                 else -> lastDigit += string
             }
-            result = lastDigit
+            result.value = lastDigit
             lastStringIsDigitOrOp = true
 
         } else {
-            currentOperator = string
-            opCount++
 
-            if (opCount == 1) {
-                resultRemember = lastDigit.toDouble()
+            if (lastStringIsDigitOrOp) {
+                currentOperator = string
+                opCount++
 
+                if (lastDigit.isEmpty()) lastDigit = "0"
+
+
+                if (opCount == 1) {
+                    resultRemember = lastDigit.toDouble()
+
+                } else {
+                    calculate(prevOperator)
+
+                }
             } else {
-                calculate(prevOperator)
+
+
+                prevOperator = currentOperator
 
             }
             lastStringIsDigitOrOp = false
@@ -124,33 +136,16 @@ class StandardCalcViewModel : ViewModel() {
             prevOperator = currentOperator
 
         }
+
     }
 
     private fun calculate(string: String) {
         when (string) {
             "+" -> {
                 resultRemember += lastDigit.toDouble()
-                result = resultRemember.toString()
-            }
-
-            "-" -> {
-                resultRemember -= lastDigit.toDouble()
-                result = resultRemember.toString()
-            }
-            "÷" -> {
-                if (lastDigit == "0") {
-                    result = "Cannot divide by zero"
-                } else {
-                    resultRemember /= lastDigit.toDouble()
-                    result = resultRemember.toString()
-                }
-            }
-            "×" -> {
-                resultRemember *= lastDigit.toDouble()
-                result = resultRemember.toString()
+                result.value = resultRemember.toString()
             }
         }
-
 
     }
 
