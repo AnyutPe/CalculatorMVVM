@@ -15,16 +15,17 @@ class StandardCalcActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //Initialising viewModel
-        viewModel =  ViewModelProviders.of(this@StandardCalcActivity)[StandardCalcViewModel::class.java]
+        viewModel =
+            ViewModelProviders.of(this@StandardCalcActivity)[StandardCalcViewModel::class.java]
 
         DataBindingUtil.setContentView<ActivityStandardCalcBinding>(
             this,
             R.layout.activity_standard_calc
         )
-            .apply {
-                binding = this
-                viewModelx = this@StandardCalcActivity.viewModel
-                lifecycleOwner = this@StandardCalcActivity
+            .also {
+                binding = it
+                it.viewModel = viewModel
+                it.lifecycleOwner = this
             }
 
     }

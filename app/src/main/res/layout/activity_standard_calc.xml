@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewModelx"
+            name="viewModel"
             type="com.example.studyingmvvm.StandardCalcViewModel" />
     </data>
 
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="bottom|end"
-            android:text="@{viewModelx.result}"
+            android:text="@{viewModel.result}"
             android:textAlignment="gravity"
             android:textColor="@android:color/white"
             android:textSize="40sp"
@@ -41,7 +41,7 @@
             app:layout_constraintGuide_percent="0.35" />
 
         <Button
-            android:id="@+id/allClear"
+            android:id="@+id/allClearFunction"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="2dp"
@@ -61,13 +61,13 @@
             android:background="@color/colorOfOtherButtons"
             android:text="@string/signPlusOrMinus"
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="@+id/allClear"
-            app:layout_constraintEnd_toStartOf="@+id/opPercentage"
-            app:layout_constraintStart_toEndOf="@+id/allClear"
-            app:layout_constraintTop_toTopOf="@+id/allClear" />
+            app:layout_constraintBottom_toBottomOf="@+id/allClearFunction"
+            app:layout_constraintEnd_toStartOf="@+id/operatorPercentage"
+            app:layout_constraintStart_toEndOf="@+id/allClearFunction"
+            app:layout_constraintTop_toTopOf="@+id/allClearFunction" />
 
         <Button
-            android:id="@+id/opPercentage"
+            android:id="@+id/operatorPercentage"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
@@ -75,23 +75,23 @@
             android:text="@string/opPercentage"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/signPlusOrMinus"
-            app:layout_constraintEnd_toStartOf="@+id/opDivision"
+            app:layout_constraintEnd_toStartOf="@+id/operatorDivision"
             app:layout_constraintStart_toEndOf="@+id/signPlusOrMinus"
-            app:layout_constraintTop_toTopOf="@+id/allClear" />
+            app:layout_constraintTop_toTopOf="@+id/allClearFunction" />
 
         <Button
-            android:id="@+id/opDivision"
+            android:id="@+id/operatorDivision"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfArithmeticOpButtons"
-            android:onClick="@{()-> viewModelx.btnOpDivision()}"
+            android:onClick="@{()-> viewModel.addOperator('÷')}"
             android:text="@string/opDivision"
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="@+id/allClear"
+            app:layout_constraintBottom_toBottomOf="@+id/allClearFunction"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/opPercentage"
-            app:layout_constraintTop_toTopOf="@+id/allClear" />
+            app:layout_constraintStart_toEndOf="@+id/operatorPercentage"
+            app:layout_constraintTop_toTopOf="@+id/allClearFunction" />
 
         <Button
             android:id="@+id/numberSeven"
@@ -99,13 +99,13 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberSeven()}"
+            android:onClick="@{()-> viewModel.addNumber('7')}"
             android:text="@string/numberSeven"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/numberFour"
             app:layout_constraintEnd_toStartOf="@+id/numberEight"
-            app:layout_constraintStart_toStartOf="@+id/allClear"
-            app:layout_constraintTop_toBottomOf="@+id/allClear" />
+            app:layout_constraintStart_toStartOf="@+id/allClearFunction"
+            app:layout_constraintTop_toBottomOf="@+id/allClearFunction" />
 
         <Button
             android:id="@+id/numberEight"
@@ -113,7 +113,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberEight()}"
+            android:onClick="@{()-> viewModel.addNumber('8')}"
             android:text="@string/numberEight"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
@@ -127,24 +127,24 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberNine()}"
+            android:onClick="@{()-> viewModel.addNumber('9')}"
             android:text="@string/numberNine"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
-            app:layout_constraintEnd_toStartOf="@+id/opMultiplication"
+            app:layout_constraintEnd_toStartOf="@+id/operatorMultiplication"
             app:layout_constraintStart_toEndOf="@+id/numberEight"
             app:layout_constraintTop_toTopOf="@+id/numberSeven" />
 
         <Button
-            android:id="@+id/opMultiplication"
+            android:id="@+id/operatorMultiplication"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorOfArithmeticOpButtons"
-            android:onClick="@{()-> viewModelx.btnOpMultiplication()}"
+            android:onClick="@{()-> viewModel.addOperator('×')}"
             android:text="@string/opMultiplication"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberSeven"
-            app:layout_constraintEnd_toEndOf="@+id/opDivision"
+            app:layout_constraintEnd_toEndOf="@+id/operatorDivision"
             app:layout_constraintStart_toEndOf="@+id/numberNine"
             app:layout_constraintTop_toTopOf="@+id/numberSeven" />
 
@@ -156,12 +156,12 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberFour()}"
+            android:onClick="@{()-> viewModel.addNumber('4')}"
             android:text="@string/numberFour"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/numberOne"
             app:layout_constraintEnd_toStartOf="@+id/numberFive"
-            app:layout_constraintStart_toStartOf="@+id/allClear"
+            app:layout_constraintStart_toStartOf="@+id/allClearFunction"
             app:layout_constraintTop_toBottomOf="@+id/numberSeven" />
 
         <Button
@@ -170,7 +170,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberFive()}"
+            android:onClick="@{()-> viewModel.addNumber('5')}"
             android:text="@string/numberFive"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberFour"
@@ -184,24 +184,24 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberSix()}"
+            android:onClick="@{()-> viewModel.addNumber('6')}"
             android:text="@string/numberSix"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberFour"
-            app:layout_constraintEnd_toStartOf="@+id/opSubtraction"
+            app:layout_constraintEnd_toStartOf="@+id/operatorSubtraction"
             app:layout_constraintStart_toEndOf="@+id/numberFive"
             app:layout_constraintTop_toTopOf="@+id/numberFour" />
 
         <Button
-            android:id="@+id/opSubtraction"
+            android:id="@+id/operatorSubtraction"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorOfArithmeticOpButtons"
-            android:onClick="@{()-> viewModelx.btnOpSubtraction()}"
+            android:onClick="@{()-> viewModel.addOperator('-')}"
             android:text="@string/opSubtraction"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberFour"
-            app:layout_constraintEnd_toEndOf="@+id/opDivision"
+            app:layout_constraintEnd_toEndOf="@+id/operatorDivision"
             app:layout_constraintStart_toEndOf="@+id/numberSix"
             app:layout_constraintTop_toTopOf="@+id/numberFour" />
 
@@ -211,12 +211,12 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberOne()}"
+            android:onClick="@{()-> viewModel.addNumber('1')}"
             android:text="@string/numberOne"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/numberZero"
             app:layout_constraintEnd_toStartOf="@+id/numberTwo"
-            app:layout_constraintStart_toStartOf="@+id/allClear"
+            app:layout_constraintStart_toStartOf="@+id/allClearFunction"
             app:layout_constraintTop_toBottomOf="@+id/numberFour" />
 
         <Button
@@ -225,7 +225,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberTwo()}"
+            android:onClick="@{()-> viewModel.addNumber('2')}"
             android:text="@string/numberTwo"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberOne"
@@ -239,24 +239,24 @@
             android:layout_height="0dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnNumberThree()}"
+            android:onClick="@{()-> viewModel.addNumber('3')}"
             android:text="@string/numberThree"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberOne"
-            app:layout_constraintEnd_toStartOf="@+id/opAddition"
+            app:layout_constraintEnd_toStartOf="@+id/operatorAddition"
             app:layout_constraintStart_toEndOf="@+id/numberTwo"
             app:layout_constraintTop_toTopOf="@+id/numberOne" />
 
         <Button
-            android:id="@+id/opAddition"
+            android:id="@+id/operatorAddition"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorOfArithmeticOpButtons"
-            android:onClick="@{()-> viewModelx.btnOpAddition()}"
+            android:onClick="@{()-> viewModel.addOperator('+')}"
             android:text="@string/opAddition"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberOne"
-            app:layout_constraintEnd_toEndOf="@+id/opDivision"
+            app:layout_constraintEnd_toEndOf="@+id/operatorDivision"
             app:layout_constraintStart_toEndOf="@+id/numberThree"
             app:layout_constraintTop_toTopOf="@+id/numberOne" />
 
@@ -266,12 +266,12 @@
             android:layout_height="0dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/background_of_number_zero"
-            android:onClick="@{()-> viewModelx.btnNumberZero()}"
+            android:onClick="@{()-> viewModel.addNumber('0')}"
             android:text="@string/numberZero"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/numberTwo"
-            app:layout_constraintStart_toStartOf="@+id/allClear"
+            app:layout_constraintStart_toStartOf="@+id/allClearFunction"
             app:layout_constraintTop_toBottomOf="@+id/numberOne" />
 
         <Button
@@ -281,24 +281,24 @@
             android:layout_marginStart="2dp"
             android:layout_marginEnd="2dp"
             android:background="@color/colorOfNumberButtons"
-            android:onClick="@{()-> viewModelx.btnSignDot()}"
+            android:onClick="@{()-> viewModel.addDot('.')}"
             android:text="@string/signDot"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberZero"
-            app:layout_constraintEnd_toStartOf="@+id/signEquals"
+            app:layout_constraintEnd_toStartOf="@+id/operatorEquality"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/numberZero"
             app:layout_constraintTop_toTopOf="@+id/numberZero" />
 
         <Button
-            android:id="@+id/signEquals"
+            android:id="@+id/operatorEquality"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/background_of_sign_equals"
             android:text="@string/signEquals"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/numberZero"
-            app:layout_constraintEnd_toEndOf="@+id/opDivision"
+            app:layout_constraintEnd_toEndOf="@+id/operatorDivision"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/signDot"
             app:layout_constraintTop_toTopOf="@+id/numberZero" />

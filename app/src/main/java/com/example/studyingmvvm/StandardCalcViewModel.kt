@@ -4,139 +4,80 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class StandardCalcViewModel : ViewModel() {
-
-    var lastDigit: String = ""
     var result = MutableLiveData<String>("0")
-    var opCount: Int = 0
-    var resultRemember: Double = 0.0
 
-    var prevOperator: String = ""
-    var currentOperator: String = ""
+    private var lastDigit: String = ""
 
-    var prevLogicResult: String = ""
-    var lastLogicResult: String = ""
+    private var countOfOperators: Int = 0
+    private var resultRemember: Double = 0.0
 
-    var lastStringIsDigitOrOp: Boolean = true
-    var lastStringIsLogicResultOrNot = false
+    private var previousOperator: String = ""
+    private var currentOperator: String = ""
+
+    private var lastStringIsDigitOrOperator: Boolean = true
 
 
     /**
      * Numbers
      */
-
-    fun btnNumberOne() {
-        appendOnResultView("1", true)
+    fun addNumber(number: Char) {
+        appendOnResultView(number, true)
     }
-
-    fun btnNumberTwo() {
-        appendOnResultView("2", true)
-    }
-
-    fun btnNumberThree() {
-        appendOnResultView("3", true)
-    }
-
-    fun btnNumberFour() {
-        appendOnResultView("4", true)
-    }
-
-    fun btnNumberFive() {
-        appendOnResultView("5", true)
-    }
-
-    fun btnNumberSix() {
-        appendOnResultView("6", true)
-    }
-
-    fun btnNumberSeven() {
-        appendOnResultView("7", true)
-    }
-
-    fun btnNumberEight() {
-        appendOnResultView("8", true)
-    }
-
-    fun btnNumberNine() {
-        appendOnResultView("9", true)
-    }
-
-    fun btnNumberZero() {
-        appendOnResultView("0", true)
-    }
-
 
     /**
      * sign Dot
      */
-
-    fun btnSignDot() {
+    fun addDot(number: Char) {
         if (lastDigit.isEmpty()) {
             lastDigit = "0."
+        }else{
+            if(lastDigit.contains('.')){
+                return
+            }else{
+                appendOnResultView('.', true)
+            }
+
         }
-
-        appendOnResultView(".", true)
     }
-
 
     /**
      *  Operators
      */
-
-    fun btnOpDivision() {
-        appendOnResultView("÷", false)
+    fun addOperator(operator: Char) {
+        appendOnResultView(operator, false)
     }
 
-    fun btnOpMultiplication() {
-        appendOnResultView("-", false)
-    }
-
-    fun btnOpSubtraction() {
-        appendOnResultView("×", false)
-    }
-
-    fun btnOpAddition() {
-        appendOnResultView("+", false)
-    }
-
-
-    private fun appendOnResultView(string: String, isDigitOrOperation: Boolean) {
+    private fun appendOnResultView(operatorOrDigit: Char, isDigitOrOperation: Boolean) {
         if (isDigitOrOperation) {
-            when {
-                lastDigit == "0" -> lastDigit = string
-                lastDigit == resultRemember.toString() -> lastDigit = string
-                else -> lastDigit += string
+            when (lastDigit) {
+                "0" -> lastDigit = operatorOrDigit.toString()
+                resultRemember.toString() -> lastDigit = operatorOrDigit.toString()
+                else -> lastDigit += operatorOrDigit
             }
             result.value = lastDigit
-            lastStringIsDigitOrOp = true
-
+            lastStringIsDigitOrOperator = true
         } else {
 
-            if (lastStringIsDigitOrOp) {
-                currentOperator = string
-                opCount++
+            if (lastStringIsDigitOrOperator) {
+                currentOperator = operatorOrDigit.toString()
+                countOfOperators++
 
                 if (lastDigit.isEmpty()) lastDigit = "0"
 
-
-                if (opCount == 1) {
+                if (countOfOperators == 1) {
                     resultRemember = lastDigit.toDouble()
-
                 } else {
-                    calculate(prevOperator)
-
+                    calculate(previousOperator)
                 }
             } else {
-
-
-                prevOperator = currentOperator
-
+                if(previousOperator == currentOperator) {
+                    countOfOperators--
+                }
             }
-            lastStringIsDigitOrOp = false
+            lastStringIsDigitOrOperator = false
             lastDigit = ""
-            prevOperator = currentOperator
-
+            previousOperator = currentOperator
         }
-
     }
 
     private fun calculate(string: String) {
@@ -146,10 +87,7 @@ class StandardCalcViewModel : ViewModel() {
                 result.value = resultRemember.toString()
             }
         }
-
     }
-
-
 }
 
 
