@@ -7,7 +7,7 @@ class StandardCalcModel {
         Operation
     }
 
-    private var lastDigit: String = ""
+    private var lastNumber: String = ""
 
     private var countOfOperators: Int = 0
     private var resultRemember: Double = 0.0
@@ -28,16 +28,15 @@ class StandardCalcModel {
      * sign Dot
      */
     fun addDot(number: Char): String {
-        if (lastDigit.isEmpty()) {
-            lastDigit = "0."
+        if (lastNumber.isEmpty()) {
+            lastNumber = "0."
         } else {
-            return if (lastDigit.contains('.')) {
-                ""
+            if (lastNumber.contains('.')) {
             } else {
                 return appendToResult('.', OperandKind.Digit)
             }
         }
-        return ""
+        return lastNumber
     }
 
     /**
@@ -48,16 +47,16 @@ class StandardCalcModel {
     }
 
     private fun appendToResult(operatorOrDigit: Char, operandKind: OperandKind): String {
-        var result = lastDigit
+       var result = lastNumber
 
         when (operandKind) {
             OperandKind.Digit -> {
-                when (lastDigit) {
-                    "0" -> lastDigit = operatorOrDigit.toString()
-                    resultRemember.toString() -> lastDigit = operatorOrDigit.toString()
-                    else -> lastDigit += operatorOrDigit
+                when (lastNumber) {
+                    "0" -> lastNumber = operatorOrDigit.toString()
+                    resultRemember.toString() -> lastNumber = operatorOrDigit.toString()
+                    else -> lastNumber += operatorOrDigit
                 }
-                result = lastDigit
+                result = lastNumber
                 lastOperandKind = OperandKind.Digit
             }
             OperandKind.Operation -> {
@@ -66,10 +65,10 @@ class StandardCalcModel {
                         currentOperator = operatorOrDigit.toString()
                         countOfOperators++
 
-                        if (lastDigit.isEmpty()) lastDigit = "0"
+                        if (lastNumber.isEmpty()) lastNumber = "0"
 
                         if (countOfOperators == 1) {
-                            resultRemember = lastDigit.toDouble()
+                            resultRemember = lastNumber.toDouble()
                         } else {
                             result = calculate(previousOperator)
                         }
@@ -77,12 +76,13 @@ class StandardCalcModel {
                     OperandKind.Operation -> {
                         if (previousOperator == currentOperator) {
                             countOfOperators--
+                            result = resultRemember.toString()
                         }
                     }
                 }
 
                 lastOperandKind = OperandKind.Operation
-                lastDigit = ""
+                lastNumber = ""
                 previousOperator = currentOperator
             }
         }
@@ -94,12 +94,16 @@ class StandardCalcModel {
         var result: String = ""
         when (string) {
             "+" -> {
-                resultRemember += lastDigit.toDouble()
+                resultRemember += lastNumber.toDouble()
                 result = resultRemember.toString()
             }
         }
+
         return result
     }
+
+
+
 }
 
 
