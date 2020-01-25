@@ -27,14 +27,11 @@ class StandardCalcModel {
     /**
      * sign Dot
      */
-    fun addDot(number: Char): String {
+    fun addDot(): String {
         if (lastNumber.isEmpty()) {
             lastNumber = "0."
-        } else {
-            if (lastNumber.contains('.')) {
-            } else {
-                return appendToResult('.', OperandKind.Digit)
-            }
+        } else if (!lastNumber.contains('.')) {
+            return appendToResult('.', OperandKind.Digit)
         }
         return lastNumber
     }
@@ -47,7 +44,7 @@ class StandardCalcModel {
     }
 
     private fun appendToResult(operatorOrDigit: Char, operandKind: OperandKind): String {
-       var result = lastNumber
+        var result = lastNumber
 
         when (operandKind) {
             OperandKind.Digit -> {
@@ -60,7 +57,7 @@ class StandardCalcModel {
                 lastOperandKind = OperandKind.Digit
             }
             OperandKind.Operation -> {
-                when(lastOperandKind) {
+                when (lastOperandKind) {
                     OperandKind.Digit -> {
                         currentOperator = operatorOrDigit.toString()
                         countOfOperators++
@@ -91,7 +88,7 @@ class StandardCalcModel {
 
 
     private fun calculate(string: String): String {
-        var result: String = ""
+        var result = ""
         when (string) {
             "+" -> {
                 resultRemember += lastNumber.toDouble()
@@ -101,8 +98,6 @@ class StandardCalcModel {
 
         return result
     }
-
-
 
 }
 

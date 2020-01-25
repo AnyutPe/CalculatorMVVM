@@ -19,8 +19,8 @@ class StandardCalcViewModel : ViewModel() {
     /**
      * sign Dot
      */
-    fun addDot(number: Char) {
-        result.value = standardCalcModel.addDot(number)
+    fun addDot() {
+        result.value = standardCalcModel.addDot()
     }
 
     /**
