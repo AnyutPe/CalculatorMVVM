@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.studyingmvvm.StandardCalcViewModel" />
+            type="com.example.studyingmvvm.viewModels.StandardCalcViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/black"
-        tools:context=".StandardCalcActivity">
+        tools:context=".views.StandardCalcActivity">
 
         <TextView
             android:id="@+id/resultView"

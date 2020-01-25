@@ -1,6 +1,6 @@
-package com.example.studyingmvvm
+package com.example.studyingmvvm.core
 
-class StandardCalcModel {
+class Calculator {
 
     enum class OperandKind {
         Digit,
@@ -15,13 +15,16 @@ class StandardCalcModel {
     private var previousOperator: String = ""
     private var currentOperator: String = ""
 
-    private var lastOperandKind = OperandKind.Digit
+    private var lastOperandKind =
+        OperandKind.Digit
 
     /**
      * Numbers
      */
     fun addNumber(number: Char): String {
-        return appendToResult(number, OperandKind.Digit)
+        return appendToResult(number,
+            OperandKind.Digit
+        )
     }
 
     /**
@@ -31,7 +34,9 @@ class StandardCalcModel {
         if (lastNumber.isEmpty()) {
             lastNumber = "0."
         } else if (!lastNumber.contains('.')) {
-            return appendToResult('.', OperandKind.Digit)
+            return appendToResult('.',
+                OperandKind.Digit
+            )
         }
         return lastNumber
     }
@@ -40,7 +45,9 @@ class StandardCalcModel {
      *  Operators
      */
     fun addOperator(operator: Char): String {
-        return appendToResult(operator, OperandKind.Operation)
+        return appendToResult(operator,
+            OperandKind.Operation
+        )
     }
 
     private fun appendToResult(operatorOrDigit: Char, operandKind: OperandKind): String {
@@ -54,7 +61,8 @@ class StandardCalcModel {
                     else -> lastNumber += operatorOrDigit
                 }
                 result = lastNumber
-                lastOperandKind = OperandKind.Digit
+                lastOperandKind =
+                    OperandKind.Digit
             }
             OperandKind.Operation -> {
                 when (lastOperandKind) {
@@ -78,7 +86,8 @@ class StandardCalcModel {
                     }
                 }
 
-                lastOperandKind = OperandKind.Operation
+                lastOperandKind =
+                    OperandKind.Operation
                 lastNumber = ""
                 previousOperator = currentOperator
             }

@@ -1,9 +1,11 @@
-package com.example.studyingmvvm
+package com.example.studyingmvvm.views
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import com.example.studyingmvvm.R
+import com.example.studyingmvvm.viewModels.StandardCalcViewModel
 import com.example.studyingmvvm.databinding.ActivityStandardCalcBinding
 
 class StandardCalcActivity : AppCompatActivity() {

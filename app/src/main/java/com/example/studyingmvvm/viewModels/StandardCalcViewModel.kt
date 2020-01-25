@@ -1,10 +1,12 @@
-package com.example.studyingmvvm
+package com.example.studyingmvvm.viewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.studyingmvvm.core.Calculator
 
 class StandardCalcViewModel : ViewModel() {
-    private val standardCalcModel = StandardCalcModel()
+    private val standardCalcModel =
+        Calculator()
 
     var result = MutableLiveData<String>("0")
 
